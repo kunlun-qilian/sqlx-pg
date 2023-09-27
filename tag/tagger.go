@@ -4,10 +4,10 @@ import (
 	"time"
 
 	"github.com/go-courier/kvcondition"
-	"github.com/go-courier/sqlx-pg/pgbuilder"
-	"github.com/go-courier/sqlx/v2"
-	"github.com/go-courier/sqlx/v2/builder"
-	"github.com/go-courier/sqlx/v2/datatypes"
+	"github.com/kunlun-qilian/sqlx-pg/pgbuilder"
+	"github.com/kunlun-qilian/sqlx/v2"
+	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v2/datatypes"
 )
 
 func TaggerFor(modelWithTag ModelWithTag) *Tagger {

@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
-	"github.com/go-courier/sqlx/v2"
-	"github.com/go-courier/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v2"
+	"github.com/kunlun-qilian/sqlx/v2/builder"
 )
 
 func Use(db sqlx.DBExecutor) *Stmt {
@@ -26,7 +26,7 @@ func (s *Stmt) ExprBy(do func(ctx context.Context) *builder.Ex) builder.SqlExpr 
 		e := builder.Expr("")
 		if !s.with.IsNil() {
 			e.WriteExpr(s.with)
-			e.WriteByte('\n')
+			_ = e.WriteByte('\n')
 		}
 
 		e.WriteExpr(do(ctx))
@@ -118,10 +118,10 @@ func (r *returning) Ex(ctx context.Context) *builder.Ex {
 	e := builder.Expr("")
 	e.WriteExpr(r.expr)
 
-	e.WriteString(" RETURNING ")
+	_, _ = e.WriteString(" RETURNING ")
 
 	if builder.IsNilExpr(r.target) {
-		e.WriteString("*")
+		_, _ = e.WriteString("*")
 	} else {
 		e.WriteExpr(r.target)
 	}

@@ -3,8 +3,8 @@ package pgbuilder
 import (
 	"context"
 
-	"github.com/go-courier/sqlx/v2"
-	"github.com/go-courier/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v2"
+	"github.com/kunlun-qilian/sqlx/v2/builder"
 )
 
 type ModalAndWithQuery interface {
@@ -41,12 +41,12 @@ func (s *StmtWith) Ex(ctx context.Context) *builder.Ex {
 	e := builder.Expr("WITH ")
 
 	if s.recursive {
-		e.WriteString("RECURSIVE ")
+		_, _ = e.WriteString("RECURSIVE ")
 	}
 
 	for i := range s.models {
 		if i > 0 {
-			e.WriteString(", ")
+			_, _ = e.WriteString(", ")
 		}
 
 		model := s.models[i]
@@ -58,12 +58,12 @@ func (s *StmtWith) Ex(ctx context.Context) *builder.Ex {
 			e.WriteExpr(&table.Columns)
 		})
 
-		e.WriteString(" AS ")
+		_, _ = e.WriteString(" AS ")
 
 		e.WriteGroup(func(e *builder.Ex) {
-			e.WriteByte('\n')
+			_ = e.WriteByte('\n')
 			e.WriteExpr(model.WithQuery(s.stmt.db))
-			e.WriteByte('\n')
+			_ = e.WriteByte('\n')
 		})
 	}
 

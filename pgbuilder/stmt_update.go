@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/go-courier/sqlx/v2/builder"
-	"github.com/go-courier/sqlx/v2/datatypes"
+	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v2/datatypes"
 )
 
 func (s *Stmt) Update(model builder.Model, modifiers ...string) *StmtUpdate {
@@ -17,16 +17,18 @@ func (s *Stmt) Update(model builder.Model, modifiers ...string) *StmtUpdate {
 	}
 }
 
-/**
+/*
+*
 [ WITH [ RECURSIVE ] with_query [, ...] ]
 UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
-    SET { column_name = { expression | DEFAULT } |
-          ( column_name [, ...] ) = [ ROW ] ( { expression | DEFAULT } [, ...] ) |
-          ( column_name [, ...] ) = ( sub-SELECT )
-        } [, ...]
-    [ FROM from_list ]
-    [ WHERE condition | WHERE CURRENT OF cursor_name ]
-    [ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
+
+	SET { column_name = { expression | DEFAULT } |
+	      ( column_name [, ...] ) = [ ROW ] ( { expression | DEFAULT } [, ...] ) |
+	      ( column_name [, ...] ) = ( sub-SELECT )
+	    } [, ...]
+	[ FROM from_list ]
+	[ WHERE condition | WHERE CURRENT OF cursor_name ]
+	[ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
 */
 type StmtUpdate struct {
 	stmt      *Stmt
@@ -103,24 +105,24 @@ func (s *StmtUpdate) Ex(ctx context.Context) *builder.Ex {
 
 		if len(s.modifiers) > 0 {
 			for i := range s.modifiers {
-				e.WriteByte(' ')
-				e.WriteString(s.modifiers[i])
+				_ = e.WriteByte(' ')
+				_, _ = e.WriteString(s.modifiers[i])
 			}
 		}
 
-		e.WriteByte(' ')
+		_ = e.WriteByte(' ')
 		e.WriteExpr(s.stmt.db.T(s.model))
 
-		e.WriteString(" SET ")
+		_, _ = e.WriteString(" SET ")
 
-		builder.WriteAssignments(e, s.rc.AsAssignments()...)
+		builder.WriteAssignments(e, rc.AsAssignments()...)
 
 		if s.from != nil {
 			ctx = builder.ContextWithToggles(ctx, builder.Toggles{
 				builder.ToggleMultiTable: true,
 			})
 
-			e.WriteString(" FROM ")
+			_, _ = e.WriteString(" FROM ")
 			e.WriteExpr(s.stmt.db.T(s.from))
 		}
 

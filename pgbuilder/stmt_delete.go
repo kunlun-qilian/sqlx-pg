@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/go-courier/sqlx/v2/builder"
-	"github.com/go-courier/sqlx/v2/datatypes"
+	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v2/datatypes"
 )
 
 func (s *Stmt) Delete(model builder.Model) *StmtDelete {
@@ -15,12 +15,14 @@ func (s *Stmt) Delete(model builder.Model) *StmtDelete {
 	}
 }
 
-/**
+/*
+*
 [ WITH [ RECURSIVE ] with_query [, ...] ]
 DELETE FROM [ ONLY ] table_name [ * ] [ [ AS ] alias ]
-    [ USING using_list ]
-    [ WHERE condition | WHERE CURRENT OF cursor_name ]
-    [ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
+
+	[ USING using_list ]
+	[ WHERE condition | WHERE CURRENT OF cursor_name ]
+	[ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
 */
 type StmtDelete struct {
 	stmt  *Stmt
@@ -67,7 +69,7 @@ func (s *StmtDelete) Ex(ctx context.Context) *builder.Ex {
 	return s.stmt.ExprBy(func(ctx context.Context) *builder.Ex {
 		return builder.
 			Delete().
-			From(table, append(builder.Additions{builder.Where(s.where)})...).
+			From(table, builder.Where(s.where)).
 			Ex(ctx)
 	}).Ex(ctx)
 }
