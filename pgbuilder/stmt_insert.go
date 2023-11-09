@@ -3,7 +3,7 @@ package pgbuilder
 import (
 	"context"
 
-	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v3/builder"
 )
 
 func (s *Stmt) Insert() *StmtInsert {

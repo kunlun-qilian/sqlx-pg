@@ -1,8 +1,8 @@
 package pgbuilder
 
 import (
-	"github.com/kunlun-qilian/sqlx/v2"
-	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v3"
+	"github.com/kunlun-qilian/sqlx/v3/builder"
 )
 
 func ToCondition(db sqlx.DBExecutor, b ConditionBuilder) builder.SqlCondition {

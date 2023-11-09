@@ -3,8 +3,8 @@ package pgbuilder
 import (
 	"fmt"
 
-	"github.com/kunlun-qilian/sqlx/v2"
-	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v3"
+	"github.com/kunlun-qilian/sqlx/v3/builder"
 )
 
 func RecordCollectionFrom(db sqlx.DBExecutor, model builder.Model, columnsCouldBeZeroValue ...*builder.Column) *RecordCollection {

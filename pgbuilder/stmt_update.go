@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/kunlun-qilian/sqlx/v2/builder"
-	"github.com/kunlun-qilian/sqlx/v2/datatypes"
+	"github.com/kunlun-qilian/sqlx/v3/builder"
+	"github.com/kunlun-qilian/sqlx/v3/datatypes"
 )
 
 func (s *Stmt) Update(model builder.Model, modifiers ...string) *StmtUpdate {

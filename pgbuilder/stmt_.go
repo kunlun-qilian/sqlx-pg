@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
-	"github.com/kunlun-qilian/sqlx/v2"
-	"github.com/kunlun-qilian/sqlx/v2/builder"
+	"github.com/kunlun-qilian/sqlx/v3"
+	"github.com/kunlun-qilian/sqlx/v3/builder"
 )
 
 func Use(db sqlx.DBExecutor) *Stmt {
