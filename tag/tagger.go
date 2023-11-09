@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/go-courier/kvcondition"
-	"github.com/kunlun-qilian/sqlx-pg/pgbuilder"
+	"github.com/kunlun-qilian/sqlx-pg/v2/pgbuilder"
 	"github.com/kunlun-qilian/sqlx/v2"
 	"github.com/kunlun-qilian/sqlx/v2/builder"
 	"github.com/kunlun-qilian/sqlx/v2/datatypes"

@@ -1,4 +1,4 @@
-module github.com/kunlun-qilian/sqlx-pg
+module github.com/kunlun-qilian/sqlx-pg/v2
 
 go 1.17
 

@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/go-courier/kvcondition"
-	"github.com/kunlun-qilian/sqlx-pg/pgutils"
+	"github.com/kunlun-qilian/sqlx-pg/v2/pgutils"
 	"github.com/kunlun-qilian/sqlx/v2"
 	"github.com/kunlun-qilian/sqlx/v2/builder"
 	"github.com/kunlun-qilian/sqlx/v2/datatypes"
